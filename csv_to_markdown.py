@@ -14,11 +14,13 @@ HOME_DIR = os.path.expanduser("~/Documents/my_markdown_files")
 def sanitize_filename(name):
     return re.sub(r'[^\w\-\.]', '_', name)
 
-def determine_difficulty(question_text):
-    if 'Hook' in question_text or 'React.Fragment' in question_text:
+def determine_difficulty(parent_category):
+    if 'Advanced' in parent_category:
         return 3
-    elif 'JSX' in question_text or 'props' in question_text:
+    elif 'Intermediate' in parent_category:
         return 2
+    elif "Basics" in parent_category:
+        return 1
     else:
         return 1
 
