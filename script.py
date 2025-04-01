@@ -39,7 +39,8 @@ def convert_csv_to_markdown(csv_file):
             
             if not question_text:
                 continue
-                
+            
+            # Extract all correct answers    
             correct_answers = row[9].split(",") if len(row) > 9 and row[9] else []
             
             answers = []
@@ -57,6 +58,7 @@ def convert_csv_to_markdown(csv_file):
             if category and category != "":
                 tags.append(category)
             
+            # Generate filenames
             filename = f"{question_counter:03d}.md"
             filepath = os.path.join(output_dir, filename)
             
@@ -78,6 +80,7 @@ def convert_csv_to_markdown(csv_file):
             print(f"Created {filepath}")
             question_counter += 1
 
+# Command-line execution
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python csv_to_markdown.py <csv_file>")
