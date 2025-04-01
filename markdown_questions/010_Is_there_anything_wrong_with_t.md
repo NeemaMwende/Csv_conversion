@@ -1,0 +1,24 @@
+---
+difficulty: 2
+tags: Basics of React, Components
+---
+
+Is there anything wrong with the following JSX syntax?
+
+
+[code]<button onClick={extendDate()} disabled={selection.isEmpty()}>
+    Extend date for selection
+</button>[/code]
+
+#
+Yes, the [b]onClick [/b]event listener is not going to work properly.
+
+
+No, the code looks correct.
+
+
+Yes, the click listener syntax should be[b] (onClick)[/b].
+
+
+Yes, some curly braces [b]{ }[/b] are missing.
+
