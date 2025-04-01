@@ -23,10 +23,12 @@ Install dependencies:
 
 ## Usage
 Run the script by specifying the CSV file path:
-- python3 csv_to_markdown.py path/to/your/data.csv
-Example (using a file inside the repo):
+- python3 csv_to_markdown.py path/to/your/data.csv (csv file inside your root project)
+  
+### Example (using a file inside the repo):
 - python3 csv_to_markdown.py data.csv
-For users running the script from their local storage:
+  
+### For users running the script from their local storage:
 - python3 csv_to_markdown.py ~/Documents/data.csv
 
 ## Synchronizing Changes
