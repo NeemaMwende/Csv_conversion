@@ -1,0 +1,89 @@
+"Question Type: multipleresponse","Parent Category",Category,"Random Answers","Grade Style","Correct Feedback","Incorrect Feedback",Points,Question,Correct,"Answer A","Answer B","Answer C","Answer D","Answer E","Answer F","Answer G","Answer H","Answer I","Answer J"
+multipleresponse,"Intermediate React",Hooks-I,Yes,Off,,,1,"Which of those affirmations are true regarding the [b]useRef[/b] hook?","A,C","[b]useRef[/b] is good to store values that do not trigger a full re-rendering of the component.","[b]useRef[/b] is good to store values that trigger a full re-rendering of the component.","[b]useRef[/b] is recommended as a way to access the DOM.","[b]useRef[/b] returns an immutable object."
+multipleresponse,"Intermediate React",Hooks-I,Yes,Off,,,1,"What is needed for the following hook to work? (select all that apply)
+
+[code]const value = useContext(MyContext);[/code]","A,B","The component using that hook must have an ancestor component called [b]<MyContext.Provider>[/b]","The corresponding context must have been created previously with code similar to: 
+
+[code]const MyContext = React.createContext(someDefaultValue);[/code]","[b]MyContext[/b] must be a valid React component.","The component using that hook must have an ancestor component called [b]<Provider MyContext={value}>[/b]"
+multipleresponse,"Intermediate React",Components-I,Yes,Off,,,1,"Which of the following scenarios would make React re-evaluate the virtual DOM of a component? ","A,C","Calling the [b]setState [/b]method of a class component","Changing the value of any property in a class component","Changing the value of any of the [b]props [/b]passed to a component","Any time variables are updated within a lifecycle method[b] [/b]or a [b]useEffect [/b]hook."
+multipleresponse,"Intermediate React",Javascript-I,Yes,Off,,,1,"Which of these affirmations are true regarding the following code?
+
+
+[code]this.timerID = setInterval(
+      function() { this.tick() },
+      1000
+);[/code]","A,B","This code won't work properly unless the developer uses an arrow function on line 2","This code only makes sense if it's in a class or a function.","The [b]tick[/b] method of the containing class will be called every second.","This code won't work properly unless the developer uses [b]setTimeout [/b]instead of [b]setInterval[/b]."
+
+
+"Question Type: multiplechoice","Parent Category",Category,"Random Answers","Correct Feedback","Incorrect Feedback",Points,Question,Correct,"Answer A","Answer B","Answer C","Answer D","Answer E","Answer F","Answer G","Answer H","Answer I","Answer J"
+multiplechoice,"Intermediate React",Components-I,Yes,,,1,"When we use the following technique, what is [b]NewComponent[/b] called?
+
+[code]const NewComponent = wrapComponent(OldComponent);[/code]",A,"A higher-order component","A parent component","A stateful component","A child component"
+multiplechoice,"Intermediate React",Components-I,Yes,,,1,"We've created a [b]Ref[/b] called [b]inputElement[/b]. How can we use it in JSX to bind it to a DOM element?",A,"[code]<input type=""text"" ref={inputElement} />[/code]","[code]<input type=""text"" useRef={inputElement} />[/code]","[code]<input type=""text"" ref=""inputElement"" />[/code]","[code]<input type=""text"" inputElement={ref} />[/code]"
+multiplechoice,"Intermediate React",Redux,Yes,,,1,"Which one of the following concepts is not part of Redux?",A,context,action,reducer,store
+multiplechoice,"Intermediate React",Javascript-I,Yes,,,1,"Considering the following code:
+
+
+[code]let a = {d: 42};
+let b = {...a};[/code]
+
+Which of the following statements would return [b]true[/b]?",A,"a.d === b.d","b === a","b == a","d === 42"
+multiplechoice,"Intermediate React",Javascript-I,Yes,,,1,"Considering the following function signature:
+
+[code]function test(a: string, b = 21, ...c)[/code]
+
+Which one of the following statements is correct?",A,"[b]test('a')[/b] means that inside the test function:
+[b]a is 'a',[/b] [b]b is 21[/b], and [b]c is [][/b]","[b]test('a', 45, 56)[/b] means that inside the test function:
+[b]a is 'a'[/b], [b]b is 45[/b], and [b]c is 56[/b]","[b]test('b', 25)[/b] means that inside the test function:
+[b]a is 'b'[/b], [b]b is 25[/b], [b]c is undefined[/b]","[b]test('c', 25, 45, 52)[/b] means that inside the test function:
+[b]a is 'c'[/b], [b]b is 21[/b], [b]c is [45, 52][/b]"
+multiplechoice,"Intermediate React",Javascript-I,Yes,,,1,"Which one of these callback function signatures is not a valid one for the [b]Array.map()[/b] Javascript function?",A,"[code]function (index, element) {  …  }[/code]","[code]function () { … }[/code]","[code]function (element, index, array) { ... }[/code]","[code]function (element) { ... }[/code]"
+multiplechoice,"Intermediate React",Components-I,Yes,,,1,"What is wrong with the key attribute in the following code?
+
+[cmimg]0/7137294_A3DMQZ3W.png[/cmimg]",A,"The[b] key [/b]attribute should be on the[b] ListItem [/b]tag on line 6","The [b]key [/b]attribute should be on the [b]ListItems [/b]expression on line 8","The [b]key [/b]attribute value should be a number, not a string","The [b]key [/b]attribute value should be set to [b]props.index[/b] on line 2"
+multiplechoice,"Intermediate React",Components-I,Yes,,,1,"Looking at the following JSX code, what assumption can we make regarding the [b]List [/b]component?
+
+
+[code]<List id={props.id} name=""My list"">
+   <ListItem value={value} />
+</List>[/code]",A,"It's most likely using [b]props.children[/b]","It's most likely using [b]props.value[/b]","This syntax is wrong, we can't assume anything","It's going to display a warning regarding the [b]ListItem [/b]component because there's no [b]key [/b]attribute on it"
+multiplechoice,"Intermediate React",Build,Yes,,,1,"Which library is typically used to compile JSX code into React instructions?",A,Babel,NPM,Redux,Thunk
+multiplechoice,"Intermediate React",Build,Yes,,,1,"Which JSX syntax will get compiled into the following React code?
+
+
+[code]React.createElement(
+  MyButton,
+  {color: 'blue', shadowSize: 2},
+  'Click Me'
+)[/code]",A,"[code]<MyButton color=""blue"" shadowSize={2}>
+  Click Me
+</MyButton>[/code]","[code]<button id=""MyButton"" color=""blue"" shadowSize={2}>
+  Click Me
+</button>[/code]","[code]<MyButton text=""Click me"">
+    <color>blue</color>
+    <shadowSize>2</shadowSize>
+</MyButton>[/code]","[code]<button MyButton Color=""blue"" ShadowSize=""2"">
+  Click Me
+</button>[/code]"
+multiplechoice,"Intermediate React",Components-I,Yes,,,1,"Look at the following code example. Where can we find such code in a React application?
+
+[code] fetch(url)
+      .then((result) => result.json())
+      .then((result) => {
+        this.setState({
+          data: result,
+        })
+      })[/code]",A,"In the [b]componentDidMount [/b]method of a [b]class [/b]component.","In the [b]useEffect [/b]callback function of a [b]function [/b]component.","In the [b]constructor [/b]method of a [b]class [/b]component.","In the body of a [b]function [/b]component."
+multiplechoice,"Intermediate React",Hooks-I,Yes,,,1,"Which of the following functions is a valid custom React hook?",A,"[code]function useFriendStatus(friendID) {
+   const [isOnline, setIsOnline] = 
+   return isOnline;
+}[/code]","[code]function getHook(a, b) {
+   return hook(a,b);
+}[/code]","[code]function setState() {
+    return useState(null);
+}[/code]","[code]useEffect(function persistForm() {
+    localStorage.setItem('formData', name);
+  });[/code]"
+multiplechoice,"Intermediate React",Hooks-I,Yes,,,1,"Which of the following is NOT a rule or a convention of React Hooks?",A,"Hooks can only use [b]useState [/b]or [b]useEffect[/b] functions internally","Only call hooks at the top level of a function","Only call hooks from React functions","A hook name must start with ""use"""
+multiplechoice,"Intermediate React",Hooks-I,Yes,,,1,"What is the primary use case for the [b]useMemo [/b]hook in React?",B,"Performing side effects","Memoizing the result of expensive calculations","Caching a component in memory","Defining context in a functional component"
+multiplechoice,"Intermediate React",Hooks-I,Yes,,,1,"When should you consider using the [b]useCallback [/b]hook in a React application?",A,"When you want to cache a function definition between re-renders","When you want to memoize a value that depends on certain dependencies","To define the initial state of a component","When you need to manage side effects"
