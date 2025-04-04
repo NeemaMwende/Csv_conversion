@@ -29,6 +29,7 @@ class SyncHandler(FileSystemEventHandler):
         self.source_dir = source_dir
         self.target_dir = target_dir
         self.syncing = False
+        self.last_modified_time = {}
         
     def on_modified(self, event):
         if event.is_directory or self.syncing or event.src_path.endswith('.tmp') or '.goutputstream-' in event.src_path:
@@ -42,9 +43,15 @@ class SyncHandler(FileSystemEventHandler):
         
         try:
             self.syncing = True
-            if os.path.exists(event.src_path):
-                shutil.copy2(event.src_path, target_path)
-                print(f"Synced: {filename}")
+            
+            current_mtime = os.path.getmtime(event.src_path)
+            
+            # Only copy if the file is new or has been modified
+            if filename not in self.last_modified_time or current_mtime > self.last_modified_time[filename]:
+                if os.path.exists(event.src_path):
+                    shutil.copy2(event.src_path, target_path)
+                    # print(f"Synced: {filename}")
+                    self.last_modified_time[filename] = current_mtime
         except Exception as e:
             print(f"Error syncing {filename}: {e}")
         finally:
@@ -166,7 +173,7 @@ def convert_csv_to_markdown(csv_file):
             with open(home_filepath, 'w', encoding='utf-8') as md_file:
                 md_file.write(markdown_content)
             
-            print(f"Created {filename}")
+            #print(f"Created {filename}")
             question_counter += 1
 
 if __name__ == "__main__":
