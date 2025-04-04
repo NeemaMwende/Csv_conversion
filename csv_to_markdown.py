@@ -95,21 +95,27 @@ def convert_csv_to_markdown(csv_file):
             if not question_type:
                 continue
                 
+            # Only process multiplechoice questions
+            if question_type.lower() != "multiplechoice":
+                continue
+                
             parent_category = row[1] if len(row) > 1 else ""
             category = row[2] if len(row) > 2 else ""
-            question_text = row[8] if len(row) > 8 else ""
+            
+            question_text = row[7] if len(row) > 7 else ""
             
             if not question_text:
                 continue
                 
-            correct_answers = row[9].split(",") if len(row) > 9 and row[9] else []
+            correct_answer = row[8] if len(row) > 8 else ""
             
+            # For multiplechoice, answers start at index 9
             answers = []
-            for j in range(10, min(20, len(row))):
-                if row[j] and row[j] != '':
+            for j in range(9, min(len(row), 13)): 
+                if j < len(row) and row[j] and row[j] != '':
                     answers.append(row[j])
             
-            difficulty = determine_difficulty(question_text)
+            difficulty = determine_difficulty(parent_category)
             
             tags = []
             if question_type:
@@ -123,17 +129,35 @@ def convert_csv_to_markdown(csv_file):
             app_filepath = os.path.join(APP_DIR, filename)
             home_filepath = os.path.join(HOME_DIR, filename)
             
+            # formatted markdown content
             markdown_content = "---\n"
             markdown_content += f"difficulty: {difficulty}\n"
             markdown_content += f"tags: {', '.join(tags)}\n"
             markdown_content += "---\n\n"
-            markdown_content += f"{question_text}\n\n"
+            
+            # Process the question text to replace [code] tags with proper markdown code blocks
+            formatted_question = re.sub(r'\[code\](.*?)\[/code\]', r'```\n\1\n```', question_text, flags=re.DOTALL)
+            
+            # Process any other formatting tags that might be present
+            formatted_question = formatted_question.replace("[b]", "**").replace("[/b]", "**")
+            
+            # Check for and handle [cmimg] tags
+            formatted_question = re.sub(r'\[cmimg\](.*?)\[/cmimg\]', r'![Image](\1)', formatted_question)
+            
+            markdown_content += f"{formatted_question}\n\n"
             
             for j, answer in enumerate(answers):
-                if chr(65 + j) in correct_answers:
-                    markdown_content += f"# Correct\n\n{answer}\n\n"
+
+                formatted_answer = re.sub(r'\[code\](.*?)\[/code\]', r'```\n\1\n```', answer, flags=re.DOTALL)
+                formatted_answer = formatted_answer.replace("[b]", "**").replace("[/b]", "**")
+                formatted_answer = re.sub(r'\[cmimg\](.*?)\[/cmimg\]', r'![Image](\1)', formatted_answer)
+            
+                answer_letter = chr(65 + j) 
+                
+                if answer_letter == correct_answer:
+                    markdown_content += f"# Correct\n\n{formatted_answer}\n\n"
                 else:
-                    markdown_content += f"#\n\n{answer}\n\n"
+                    markdown_content += f"#\n\n{formatted_answer}\n\n"
             
             # Write to both locations
             with open(app_filepath, 'w', encoding='utf-8') as md_file:
